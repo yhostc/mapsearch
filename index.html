@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>AutoNavi 地图频道</title>
+<script language="javascript" src="js/jquery.min.js"></script>
+<script language="javascript" src="js/jqueryui.min.js"></script>
+<script language="javascript" src="js/autoPrompts.js"></script>
+<script language="javascript" src="js/common.js"></script>
+<script src="http://10.2.134.39:8081/map.js" type="text/javascript"></script>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/jquery.Jcrop.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="layout">
+  <div class="layout-top">
+    <div class="top-logo"><img src="images/logo.png"/></div>
+    <div class="top-search">
+      <form name="myform" onSubmit="return void(0);">
+        <input type="text" class="k" name="keywords">
+        <input type="submit" class="b" name="b" value="查 询">
+      </form>
+    </div>
+    <div class="top-login"> <a href="#">yhostc</a> <a href="#">我的收藏</a> <a href="#">注销登陆</a> </div>
+    <div class="top-tool">
+      <ul>
+        <li><a href="javascript:Map.screenShot()"><img class="icon icon1" src="images/blank.gif" />截图</a></li>
+        <li><a href="javascript:Map.printMap()"><img class="icon icon2" src="images/blank.gif" />打印</a></li>
+        <li><a href="javascript:Map.surveyLine()"><img class="icon icon3" src="images/blank.gif" />测距</a></li>
+        <li><a href="javascript:Map.fullScreen()"><img class="icon icon4" src="images/blank.gif" />全屏</a></li>
+        <li><a href="javascript:Map.clearMap()"><img class="icon icon5" src="images/blank.gif" />清屏</a></li>
+        <li><a href="javascript:Map.share()"><img class="icon icon6" src="images/blank.gif" />分享</a></li>
+        <div class="clear"></div>
+      </ul>
+    </div>
+    <div class="top-city"></div>
+    <div class="clear"></div>
+  </div>
+  <div class="layout-left">
+    <ul class="search-cate">
+      <li cate="poi" class="link">搜索</li>
+      <li cate="bus">公交</li>
+      <li cate="route">驾车</li>
+      <li cate="favourite">收藏</li>
+      <div class="clear"></div>
+    </ul>
+    <div class="ct ct-poi">搜索</div>
+    <div class="ct ct-bus">公交</div>
+    <div class="ct ct-route">导航</div>
+    <div class="ct ct-favourite">收藏</div>
+  </div>
+  <div class="layout-right">
+    <div class="layout-map"></div>
+    <div class="right-toggle"><img class="left" src="images/blank.gif"></div>
+    <!--横向渐变-->
+    <div style="position:absolute;z-index:2;top:0px; width:100%;">
+      <div class="shadow shadow-top shadow1"></div>
+      <div class="shadow shadow-top shadow2"></div>
+      <div class="shadow shadow-top shadow3"></div>
+      <div class="shadow shadow-top shadow4"></div>
+      <div class="shadow shadow-top shadow5"></div>
+    </div>
+    <!--纵向渐变-->
+    <div style="position:absolute;z-index:3;top:0px;left:0px;width:5px;">
+      <div class="shadow shadow-left shadow6"></div>
+      <div class="shadow shadow-left shadow7"></div>
+      <div class="shadow shadow-left shadow8"></div>
+      <div class="shadow shadow-left shadow9"></div>
+      <div class="shadow shadow-left shadow10"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+</body>
+</html>
