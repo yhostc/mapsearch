@@ -7,6 +7,5 @@ class IndexAction extends Action
     	
     	dump(ord(" "));
     }
-    
 }
 ?>

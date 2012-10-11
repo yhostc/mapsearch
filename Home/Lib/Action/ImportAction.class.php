@@ -5,10 +5,27 @@ class ImportAction extends Action
     
     public function index(){
         header("Content-Type:text/html; charset=utf-8");
-		$arr = self::excelToArray("./11Q3pcd.xls");
+		$arr = self::excelToArray("./spec.xlsx");
 		
-		dump($arr);
-    	
+		$data = array();
+		$lastFont = '';
+		
+		for($i=1;$i<count($arr);$i++){
+			$val = $arr[$i];
+			$lastFont = $arr[$i][4] ? $arr[$i][4] :  $lastFont;
+			
+			dump(array(
+				'name'=>	$arr[$i][0],
+				'code'=>	(string)$arr[$i][1],
+				'priority'=>$arr[$i][2],
+				'zoom'=>	$arr[$i][3],
+				//'icon'=>	$arr[$i][4],
+				'font'=>	$lastFont
+			));
+		}
+		
+		
+		dump($data);
     }
 	protected function excelToArray($file){
 		require(LIB_PATH.'ORG/PHPExcel.php');
