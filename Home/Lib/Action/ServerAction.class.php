@@ -90,25 +90,25 @@ class ServerAction extends Action
 		switch ($result){
 			case 0:
 				break;
-			case 1:
+			case 1://行政区划
 				$a = self::_district($keyword,10,$city);
 				break;
-			case 2:
+			case 2://地理解析
 				$a = self::_geocode($keyword,10);
 				break;
-			case 3:
+			case 3://道路
 				$a = self::_road($keyword,10,$city);
 				break;
-			case 4:
+			case 4://周边
 				$a = self::_vicinity($keyword,10,$city,$cate,$page);
 				break;
-			case 5:
+			case 5://POI搜索
 				$a = self::_poi($keyword,10,$city,$cate,$page);
-				break;
-			case 6:
+				break; 
+			case 6://公交线路
 				$a = self::_bus($keyword,10,$city);
 				break;
-			case 7:
+			case 7://公交线路
 				$a = self::_busline($keyword,10,$city);
 				break;
 			default:
