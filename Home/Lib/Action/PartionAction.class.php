@@ -83,5 +83,32 @@ class PartionAction extends Action
 			$ip = "unknown";
 		return ($ip);
 	}
+	
+	function citylist(){
+		header("Content-Type:text/html; charset=utf-8");
+		$model = D("Partion");
+		$list = $model->where("pcd =  'C' or pcd='P'")->field("id,name,pcd,sw_x,sw_y,ne_x,ne_y")->order("pcd asc,id asc")->select();
+		$data = array();
+		$citys = array();
+		$replace = array("市","省","朝鲜族自治","地区","盟","自治区","特别行政区","自治州","维吾尔","回族","哈萨克","自治州","白族","苗族自治县","土家族苗族","黎族自治县","黎族");
+		foreach($list as $item){
+			
+			
+			$name = $item['name'];
+			/*
+			for($i=0;$i<count($replace);$i++){
+				$name = str_ireplace($replace[$i], "",$name);
+			}
+			$citys[] = $name;
+			*/
+			
+			$data[] = "'".$name."':[".round($item['sw_x'], 6).",".round($item['sw_y'], 6).",".round($item['ne_x'], 6).",".round($item['ne_y'], 6)."]";
+			
+		}
+		//dump($data);
+		echo "{".implode($data,",")."}";
+		 
+		//echo implode($citys, ",");
+	}
 }
 ?>
