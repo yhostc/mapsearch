@@ -175,7 +175,7 @@ class ServerAction extends Action
 	}
 	//POI查询
     protected function _poi($k,$c=10,$city='total',$cate='',$page=1){//POI查询
-    	$url  = C('LSE')."sisserver?query_type=TQUERY&data_type=POI+NEWPOI&page_num=$c&keywords=$k";
+    	$url  = C('LSE')."sisserver.php?query_src=test&user_info=test&query_type=TQUERY&data_type=POI+NEWPOI&page_num=$c&keywords=$k";
     	$url .= "&category=$cate";
     	$url .= "&page=$page";
     	$url .= "&city=$city";
@@ -184,7 +184,7 @@ class ServerAction extends Action
     		$Model = D('Partion');
     		$pid = $Model->where("name='$city'")->getField('pid');
     		$city = $Model->where("id=$pid")->getField('name');
-    		$url  = C('LSE')."sisserver?query_type=TQUERY&data_type=POI+NEWPOI&page_num=$c&keywords=$k";
+    		$url  = C('LSE')."sisserver.php?query_type=TQUERY&data_type=POI+NEWPOI&page_num=$c&keywords=$k";
 	    	$url .= "&category=$cate";
 	    	$url .= "&page=$page";
 	    	$url .= "&city=$city";
@@ -202,7 +202,7 @@ class ServerAction extends Action
     	$data = explode('|', $k);
     	$center = $data[0];
     	$k = $data[1];
-    	$url  = C('LSE')."sisserver?query_type=RQBN&data_type=POI&page_num=$c&center=$center&keywords=$k";
+    	$url  = C('LSE')."sisserver.php?query_src=test&user_info=test&query_type=RQBN&data_type=POI&page_num=$c&center=$center&keywords=$k";
     	$url .= "&category=$cate";
     	$url .= "&page=$page";
     	$url .= "&city=$city";
@@ -217,7 +217,7 @@ class ServerAction extends Action
     //地址解析
     protected function _geocode($k,$c=10){//地址解析
     	$k = urlencode(mb_convert_encoding($k, 'gbk', 'utf-8'));
-    	$url = C('LSE')."geocoding.cgi?query_type=GEOCODE&data_type=POI+NEWPOI&count=$c&restrict_area=&keywords=$k";
+    	$url = C('LSE')."geocoding.cgi?query_src=test&user_info=test&query_type=GEOCODE&data_type=POI+NEWPOI&count=$c&restrict_area=&keywords=$k";
     	$list = get_data_by_get($url);
     	if ($list['count']!="" && is_array($list['list']) && is_array($list['list']["poi"])) {//返回有效结果
     		$pois = $list['count']=="1" ? array($list['list']["poi"]) : $list['list']["poi"];
@@ -229,7 +229,7 @@ class ServerAction extends Action
     //区县查询
     protected function _district($k,$c=10,$city){
     	$k = urlencode(mb_convert_encoding($k, 'gbk', 'utf-8'));
-    	$url  = C('LSE')."sisserver?query_type=TQUERY&data_type=DISTRICT&page_num=$c&keywords=$k";
+    	$url  = C('LSE')."sisserver.php?query_src=test&user_info=test&query_type=TQUERY&data_type=DISTRICT&page_num=$c&keywords=$k";
     	//$url .= "&city=$city";
     	$list = get_data_by_get($url);
     	if ($list['count']!="" && is_array($list['list']) && is_array($list['list']["district"])) {//返回有效结果
@@ -242,14 +242,14 @@ class ServerAction extends Action
     //公交站点查询
     protected function _bus($k,$c=10,$city=''){
     	$k = urlencode(mb_convert_encoding($k, 'gbk', 'utf-8'));
-    	$url  = C('LSE')."sisserver?query_type=TQUERY&data_type=BUS&page_num=$c&keywords=$k";
+    	$url  = C('LSE')."sisserver.php?query_src=test&user_info=test&query_type=TQUERY&data_type=BUS&page_num=$c&keywords=$k";
     	$url .= "&city=$city";
     	$list = get_data_by_get($url);
     	if ($list['count'] == 0){
     		$Model = D('Partion');
     		$pid = $Model->where("name='$city'")->getField('pid');
     		$city = $Model->where("id=$pid")->getField('name');
-    		$url  = C('LSE')."sisserver?query_type=TQUERY&data_type=BUS&page_num=$c&keywords=$k";
+    		$url  = C('LSE')."sisserver.php?query_src=test&user_info=test&query_type=TQUERY&data_type=BUS&page_num=$c&keywords=$k";
     		$url .= "&city=$city";
     		$list = get_data_by_get($url);
     	}
@@ -262,7 +262,7 @@ class ServerAction extends Action
     }
     //公交线路查询
     protected function _busline($k,$c=10,$city=''){//道路查询
-    	$url  = C('LSE')."sisserver?query_type=TQUERY&data_type=BUSLINE&page_num=$c&keywords=$k";
+    	$url  = C('LSE')."sisserver.php?query_src=test&user_info=test&query_type=TQUERY&data_type=BUSLINE&page_num=$c&keywords=$k";
     	$url .= "&city=$city";
     	$list = get_data_by_get($url);
     	if ($list['count']!="" && is_array($list['list']) && is_array($list['list']["busline"])) {//返回有效结果
@@ -274,14 +274,14 @@ class ServerAction extends Action
     }
     //道路查询
     protected function _road($k,$c=10,$city=''){//道路查询
-    	$url  = C('LSE')."sisserver?query_type=TQUERY&data_type=ROAD&page_num=$c&keywords=$k";
+    	$url  = C('LSE')."sisserver.php?query_src=test&user_info=test&query_type=TQUERY&data_type=ROAD&page_num=$c&keywords=$k";
     	$url .= "&city=$city";
     	$list = get_data_by_get($url);
     	if ($list['count'] == 0){
     		$Model = D('Partion');
     		$pid = $Model->where("name='$city'")->getField('pid');
     		$city = $Model->where("id=$pid")->getField('name');
-    		$url  = C('LSE')."sisserver?query_type=TQUERY&data_type=ROAD&page_num=$c&keywords=$k";
+    		$url  = C('LSE')."sisserver.php?query_type=TQUERY&data_type=ROAD&page_num=$c&keywords=$k";
     		$url .= "&city=$city";
     		$list = get_data_by_get($url);
     	}
@@ -294,7 +294,7 @@ class ServerAction extends Action
     }
     //行政区划查询
     protected function _area($k,$c=10,$city=''){
-    	$url  = C('LSE')."sisserver?query_type=TQUERY&data_type=AREAINFO&page_num=$c&keywords=$k";
+    	$url  = C('LSE')."sisserver.php?query_src=test&user_info=test&query_type=TQUERY&data_type=AREAINFO&page_num=$c&keywords=$k";
     	$url .= "&city=$city";
     	$list = get_data_by_get($url);
     	if ($list['count']!="" && is_array($list['list']) && is_array($list['list']["busline"])) {//返回有效结果

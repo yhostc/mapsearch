@@ -45,6 +45,7 @@ class TilesAction extends Action{
     	$path .= "/$x.$y";
     	$_t1 = $_t2 = $_t3 = micro_time();
     	$c = "YES";//是否缓存
+		
     	if (!file_exists("$path.png")) {//检查该请求切片是否已经存在，如果不存在，则生产切片
     		$c = "NO";//新生产切片
     		$sw = self::pixel2lnglat($x*256-5,($y+1)*256-5,$z);//根据切片号转换为切片Bounds
@@ -52,6 +53,7 @@ class TilesAction extends Action{
 	    	$b = implode(",",$sw).";".implode(",",$ne);
 	    	$k = D("Mass")->where("md=$t")->getField("keyword");
 	    	$data = LseAction::boundsSearch($k,100,$sw,$ne);
+			
 	    	$_t2 = micro_time();
 	    	$hot = self::render($data['list'], $sw, $ne, $z, "$path.png");
 	    	$_t3 = micro_time();
